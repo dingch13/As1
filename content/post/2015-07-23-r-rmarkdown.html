@@ -1,0 +1,78 @@
+---
+title: "cesR Data Analysis on gender and age"
+author: "Chenxuan Ding"
+date: 2020-09-25T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+
+
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+# devtools::install_github(&quot;hodgettsp/cesR&quot;)
+library(tidyverse) </code></pre>
+<div id="abstract" class="section level1">
+<h1>Abstract</h1>
+<p>The distribution of Canadian Age is very interesting: man is generally older than women. 2019 Canadian Election Study helps us to understand the distribution of age for both men and women.</p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Canadian Election Study that surveyed in 2019 included much information about Canadians, one of the interesting directions could be how gender is related to Canadian’s age. As we have participants’ age and gender, we found that Man is generally older than women.</p>
+<p>Some initial explorations on the data set will be created, including select useful variables and reasonable observations; then a series of the plot will be created in order to find the distribution of these variables. We found that the median and the maximum point of man’s age is older than women.</p>
+<p>The paper will analyze the distribution of age for both men and women. In the future, we will be able to further analyze the age of death for men and women. But one of the weaknesses of the paper is that our sample size is small compare to the entire population.</p>
+<pre class="r"><code>cesR::get_ces(&quot;ces2019_web&quot;)
+## TO CITE THIS SURVEY FILE:
+## 
+## - Stephenson, Laura B; Harell, Allison; Rubenson, Daniel; Loewen, Peter John, 2020, &#39;2019 Canadian Election Study - Online Survey&#39;, https://doi.org/10.7910/DVN/DUS88V, Harvard Dataverse, V1
+## 
+## - Stephenson, Laura, Allison Harrel, Daniel Rubenson and Peter Loewen. Forthcoming. &#39;Measuring Preferences and Behaviour in the 2019 Canadian Election Study,&#39; Canadian Journal of Political Science.
+## 
+## LINK: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DUS88V</code></pre>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>The variables we focus on are:</p>
+<ul>
+<li><p>the gender of participants in the Web survey</p></li>
+<li><p>the age of participants in the Web survey</p></li>
+</ul>
+<p>The data is about Canadian Election Study in 2019 and I choose the Web survey in this study to explore some interesting findings. After filter people who provide their gender and age, there are 37531 observations available in the dataset.</p>
+<div id="summary-statistics-for-the-two-interested-variables-age-and-gender" class="section level3">
+<h3>Summary statistics for the two interested variables age and gender:</h3>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)
+## # A tibble: 2 x 3
+##   cps19_gender mean_age median_age
+##   &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Man              51.8         54
+## 2 Woman            46.6         46</code></pre>
+</div>
+</div>
+<div id="plot" class="section level1">
+<h1>Plot</h1>
+<p><img src="/post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Based on two boxplots, we found that the distribution of age for both man and woman are symmetric distribution. The median age between man and woman are different, more specifically the median age of man is greater than women.</p>
+</div>
+<div id="discussion" class="section level1">
+<h1>Discussion</h1>
+<p>Currently, the median age of men is greater than women in Canada for 8 years old. Although the average age between men and women has smaller gaps compares to the median, it still can imply that in society, men are generally older than women.</p>
+<p>However, our dataset only contained people who were willing to participate. There is some non-response problem in the data set.</p>
+<div id="weaknesses-and-next-steps" class="section level3">
+<h3>Weaknesses and next steps</h3>
+<p>So one of the weaknesses of the analysis is that we have fewer samples compare to the entire Canadian population.</p>
+<p>Furthermore, we found the max-age for men is also older than women, the next step could be to analyze the average age of death for both gender.</p>
+</div>
+</div>
+<div id="blog-website" class="section level1">
+<h1>Blog website</h1>
+<p><a href="https://github.com/dingch13/As1" class="uri">https://github.com/dingch13/As1</a></p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<ul>
+<li>Stephenson, Laura B; Harell, Allison; Rubenson, Daniel; Loewen, Peter John, 2020, ‘2019 Canadian Election Study - Online Survey’, <a href="https://doi.org/10.7910/DVN/DUS88V" class="uri">https://doi.org/10.7910/DVN/DUS88V</a>, Harvard Dataverse, V1</li>
+<li>Paul A. Hodgetts and Rohan Alexander (2020). cesR: Access the CES Datasets a Little Easier.. R package version 0.1.0.</li>
+<li>Hadley Wickham, Jim Hester and Winston Chang (2020). devtools: Tools to Make Developing R Packages Easier. <a href="https://devtools.r-lib.org/,https://github.com/r-lib/devtools" class="uri">https://devtools.r-lib.org/,https://github.com/r-lib/devtools</a>.</li>
+<li>R Core Team (2020). R: A language and environment for statistical computing. R, Foundation for Statistical Computing, Vienna, Austria. URL, <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</li>
+<li>JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone (2020). rmarkdown: Dynamic Documents for R. R package version 2.3. URL <a href="https://rmarkdown.rstudio.com" class="uri">https://rmarkdown.rstudio.com</a>.</li>
+</ul>
+</div>
